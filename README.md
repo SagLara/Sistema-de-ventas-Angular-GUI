@@ -25,32 +25,33 @@ Tanto en este como en el otro proyecto se encuentra el modelo y los scripts de c
 Vista:
 
 Home
-<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/home.JPG" width="500" height="250" />
+
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/home.JPG" width="600" height="250" />
 
 Registrar Venta
 
-<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/venta.JPG" width="700" height="700" />
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/venta.JPG" width="800" height="650" />
 
 Listado Productos
 
-<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/list-productos.JPG" width="600" height="350" />
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/list-productos.JPG" width="650" height="300" />
 
 
 Buscar Informe por Fecha
 
-<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/search-informe.JPG" width="300" height="200" />
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/search-informe.JPG" width="400" height="200" />
 
 Agregar Cliente
 
-<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/add-cliente.JPG" width="500" height="500" />
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/add-cliente.JPG" width="650" height="500" />
 
 Vista Informe
 
-<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/informe.JPG" width="380" height="380" />
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/informe.JPG" width="400" height="320" />
 
 Vista Ubicacion
 
-<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/ubicacion.JPG" width="320" height="320" />
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/ubicacion.JPG" width="350" height="300" />
 
 ### Modelo 
 

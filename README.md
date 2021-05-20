@@ -1,4 +1,44 @@
-# Shop
+# GUI // Sistema de Ventas Angular+PHP+MySQL
+
+-------- 
+### Shop
+Proyecto realizado como una prueba tecnica, es un sistema de ventas que puede Ver,crear, editar y eliminar clientes, productos informes y registros de ventas.
+
+Se almacenan cordenadas de un cliente para visualizarlas en una vista de Google Maps.
+
+Se pueden buscar informes que brindan informacion estadistica simple de las ventas realizadas en un dia en especifico.
+
+Se manejan restricciones tanto desde el Front como desde la Base de Datos.
+
+Se uso PHP del lado del Servidor, a continuación adjunto el link del proyecto.
+
+Uso de MySQL para la Base de Datos.
+Uso de Bootstrap para esitlos.
+Uso de Font Awesome para los iconos.
+
+[Logica de Sistema de Ventas PHP](https://github.com/SagLara/Logica-de-Sistema-de-Ventas-PHP)
+
+Tanto en este como en el otro proyecto se encuentra el modelo y los scripts de creación y llenado
+
+### Shop Gui
+
+Vista:
+
+![Home]()
+
+![Listado Productos]()
+
+![Registrar Venta]()
+
+![Agregar Cliente]()
+
+![Vista Informe]()
+
+![Vista Ubicacion]()
+### Modelo 
+
+[Modelo de Sistema de Ventas Angular+PHP+MySQL](https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/database/modelShop.JPG)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
 

@@ -24,17 +24,34 @@ Tanto en este como en el otro proyecto se encuentra el modelo y los scripts de c
 
 Vista:
 
-![Home]()
+Home
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/home.JPG" width="500" height="250" />
 
-![Listado Productos]( )
+Registrar Venta
 
-![Registrar Venta]()
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/venta.JPG" width="700" height="700" />
 
-![Agregar Cliente]()
+Listado Productos
 
-![Vista Informe]()
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/list-productos.JPG" width="600" height="350" />
 
-![Vista Ubicacion]()
+
+Buscar Informe por Fecha
+
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/search-informe.JPG" width="300" height="200" />
+
+Agregar Cliente
+
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/add-cliente.JPG" width="500" height="500" />
+
+Vista Informe
+
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/informe.JPG" width="380" height="380" />
+
+Vista Ubicacion
+
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/ubicacion.JPG" width="320" height="320" />
+
 ### Modelo 
 
 [Modelo de Sistema de Ventas Angular+PHP+MySQL](https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/database/modelShop.JPG)

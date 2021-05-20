@@ -26,7 +26,7 @@ Vista:
 
 ![Home]()
 
-![Listado Productos]()
+![Listado Productos]( )
 
 ![Registrar Venta]()
 

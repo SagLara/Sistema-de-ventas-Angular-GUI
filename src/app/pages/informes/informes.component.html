@@ -1,0 +1,55 @@
+<div class="container p-2">
+
+    <div *ngIf="!buscar" class="card tab">
+        <div class="card-header table">
+            <h3 class="mt-2">Informe del dia {{informe.fecha}}</h3>
+            <a (click)="buscar=true;" class="btn btn-danger">
+                <i class="fa fa-arrow-left"></i> Regresar
+            </a>
+        </div>
+        <div class="card-body">
+            <form class="card border-dark p-2" [formGroup]="formInforme">
+                <div class="mb-2">
+                    <label for="id" class="form-label">ID. Informe</label>
+                    <input id="id" formControlName="id" class="form-control p-2 mb-2" placeholder="Id" disabled/>
+                </div>
+                <div class="mb-2">
+                    <label for="cant_ventas" class="form-label">Cantidad de Ventas</label>
+                    <input id="cant_ventas" formControlName="cant_ventas" class="form-control p-2 mb-2" placeholder="Cantidad de Ventas" disabled/>
+                </div>
+                <div class="mb-2">
+                    <label for="venta_mayor" class="form-label">Venta mayor del Dia</label>
+                    <input id="venta_mayor" formControlName="venta_mayor" class="form-control p-2 mb-2" placeholder="Venta mayor" disabled/>
+                </div>
+                <div class="mb-2">
+                    <label for="venta_menor" class="form-label">Venta menor del Dia</label>
+                    <input id="venta_menor" formControlName="venta_menor" class="form-control p-2 mb-2" placeholder="Venta menor" disabled/>
+                </div>
+                <div class="mb-2">
+                    <label for="venta_promedio" class="form-label">Promedio de ventas en el Dia</label>
+                    <input id="venta_promedio" formControlName="venta_promedio" class="form-control p-2 mb-2" placeholder="Promedio de ventas" disabled/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div *ngIf="buscar" class="card add">
+        <div class="card-header element">
+            <h3 class="mt-2"> Buscar Informe </h3>
+        </div>
+        <div class="card-body">
+            <form class="card border-dark p-2" [formGroup]="formInforme">
+                <div class="mb-2">
+                    <label for="fecha" class="form-label">Ingrese la fecha del Informe</label>
+                    <input type="date" id="fecha" formControlName="fecha" class="form-control p-2 mb-2" placeholder="Fecha" required/>
+                    <small class="form-text"> Recuerde que este campo no debe ir vacio </small>
+                </div>
+                <button (click)="buscarInforme()" class="btn btn-success m-1">
+                    <i class="fa fa-search"></i>
+                    Buscar
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>

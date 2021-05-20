@@ -1,0 +1,14 @@
+.search {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+}
+
+.line {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+}

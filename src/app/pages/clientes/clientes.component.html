@@ -1,0 +1,156 @@
+<div class="container p-2">
+
+    <div *ngIf="!nuevo && !update && !ubicacion" class="card tab">
+        <div class="card-header table">
+            <h3 class="mt-2">Listado de Clientes</h3>
+            <a (click)="nuevo=true" class="btn btn-success">
+                <i class="fa fa-user-plus"></i> Nuevo Cliente
+            </a>
+        </div>
+        <div class="card-body">
+            <div *ngIf="clientes==[]" class="alert alert-warning text-center mt-3">
+                <h3 class="alert-heading">No hay ningun cliente para visualizar</h3>
+                <p>
+                    <i class="fa fa-exclamation fa-2x    "></i>
+                </p>
+            </div>
+            <div *ngIf="clientes!=[]" class="lista">
+                <div class="row ">
+                    <div class="th col-1">
+                        Id
+                    </div>
+                    <div class="th col-2">
+                        Nombres
+                    </div>
+                    <div class="th col-2">
+                        Apellidos
+                    </div>
+                    <div class="th col-2">
+                        Documento
+                    </div>
+                    <div class="th col-2">
+                        Tipo
+                    </div>
+                    <div class="th col-3">
+                        Opciones
+                    </div>
+                </div>
+                <div *ngFor="let cli of clientes; let i = index;" class="row fill">
+                    <div class="cell col-1">
+                        {{cli.id}}
+                    </div>
+                    <div class="cell col-2">
+                        {{cli.nombres}}
+                    </div>
+                    <div class="cell col-2">
+                        {{cli.apellidos}}
+                    </div>
+                    <div class="cell col-2">
+                        {{cli.documento}}
+                    </div>
+                    <div class="cell col-2">
+                        {{cli.tipo_doc}}
+                    </div>
+                    <div class="cell col-3">
+                        <button class="btn btn-info opcion-btn " (click)="initMap(cli.id)">
+                            <i class="fa fa-map-marked-alt"></i>
+                        </button>
+                        <button class="btn btn-warning opcion-btn" (click)="getCliente(cli.id)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn btn-danger opcion-btn" (click)="deleteUbicacion(cli.id)">
+                            <i class="fa fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="(nuevo || update) && !ubicacion" class="card add">
+        <div class="card-header element">
+            <h3 class="mt-2">Nuevo Cliente</h3>
+            <a (click)="nuevo=false; update=false;" class="btn btn-danger">
+                <i class="fa fa-arrow-left"></i> Regresar
+            </a>
+        </div>
+        <div class="card-body">
+            <form class="card border-dark p-2" [formGroup]="formCliente">
+                <div *ngIf="update" class="mb-2">
+                    <label for="id" class="form-label">ID. Cliente</label>
+                    <input id="id" formControlName="id" class="form-control p-2 mb-2" placeholder="Id" disabled/>
+                </div>
+                <div class="mb-2">
+                    <label for="nombres" class="form-label">Nombres del Cliente</label>
+                    <input id="nombres" formControlName="nombres" class="form-control p-2 mb-2" placeholder="Nombres" required/>
+                    <small class="form-text"> Recuerde que este campo no debe ir vacio</small>
+                </div>
+                <div class="mb-2">
+                    <label for="apellidos" class="form-label">Apellidos del Cliente</label>
+                    <input id="apellidos" formControlName="apellidos" class="form-control p-2 mb-2" placeholder="Apellidos" required/>
+                    <small class="form-text"> Recuerde que este campo no debe ir vacio</small>
+                </div>
+                <div class="mb-2">
+                    <label for="documento" class="form-label">Documento de Identidad</label>
+                    <input id="documento" formControlName="documento" class="form-control p-2 mb-2" placeholder="Documento" required/>
+                    <small class="form-text"> Recuerde que este campo no debe ir vacio y debe ser unico</small>
+                </div>
+                <div class="mb-2">
+                    <label for="tipo_doc" class="form-label">Tipo de Documento</label>
+                    <select id="tipo_doc" formControlName="tipo_doc" class="form-select p-2 mb-2" placeholder="Tipo de Documento" required>
+                        <option value="C.C">C.C</option>
+                        <option value="C.E">C.E</option>
+                        <option value="T.I">T.I</option>
+                    </select>
+                    <small class="form-text"> Recuerde que este campo no debe ir vacio</small>
+                </div>
+                <hr>
+                <div class="mb-2">
+                    <label for="ciudad" class="form-label">Ciudad</label>
+                    <input id="ciudad" formControlName="ciudad" class="form-control p-2 mb-2" placeholder="Ciudad" />
+                </div>
+                <div class="mb-2">
+                    <label for="latitud" class="form-label">Latitud</label>
+                    <input type="number" id="latitud" formControlName="latitud" class="form-control p-2 mb-2" placeholder="Latitud" required/>
+                    <small class="form-text"> Recuerde que este campo no debe ir vacio </small>
+                </div>
+                <div class="mb-2">
+                    <label for="longitud" class="form-label">Longitud</label>
+                    <input type="number" id="longitud" formControlName="longitud" class="form-control p-2 mb-2" placeholder="Longitud" required/>
+                    <small class="form-text"> Recuerde que este campo no debe ir vacio </small>
+                </div>
+                <hr>
+                <button *ngIf="nuevo" (click)="addCliente()" class="btn btn-success m-1">
+                    <i class="fa fa-plus"></i>
+                    Agregar
+                </button>
+                <button *ngIf="update" (click)="updateCliente()" class="btn btn-warning m-1">
+                    <i class="fa fa-edit"></i>
+                    Actualizar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div *ngIf="ubicacion" class="card">
+        <div class="card-header">
+            <h3 class="mt-2">Ubicacion Cliente</h3>
+            <a (click)="ubicacion=false;" class="btn btn-danger">
+                <i class="fa fa-arrow-left"></i> Regresar
+            </a>
+        </div>
+        <div class="card-body">
+            <!-- <div *ngIf="location!=null">
+                <agm-map [latitude]="59.326242" [longitude]="17.8419719">
+                    <agm-marker [latitude]="59.326242" [longitude]="17.8419719">
+                        <agm-info-window>Börk</agm-info-window>
+                    </agm-marker>
+                </agm-map>
+            </div> -->
+            <div *ngIf="location!=null" style="width: 500px; height: 500px;" id="map"></div>
+        </div>
+
+
+    </div>
+
+</div>

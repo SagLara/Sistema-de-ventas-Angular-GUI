@@ -1,0 +1,279 @@
+<div class="container p-2">
+
+    <div *ngIf="!nuevo && !read" class="card tab">
+        <div class="card-header table">
+            <h3 class="mt-2">Listado de Ventas</h3>
+            <a (click)="nuevo=true" class="btn btn-success">
+                <i class="fa fa-plus"></i> Registrar Venta
+            </a>
+        </div>
+        <div class="card-body">
+            <div *ngIf="ventas==[]" class="alert alert-warning text-center mt-3">
+                <h3 class="alert-heading">No hay ninguna venta para visualizar</h3>
+                <p>
+                    <i class="fa fa-exclamation fa-2x    "></i>
+                </p>
+            </div>
+            <div *ngIf="ventas!=[]" class="lista">
+                <div class="row ">
+                    <div class="th col-2">
+                        Id
+                    </div>
+                    <div class="th col-2">
+                        # Cliente
+                    </div>
+                    <div class="th col-2">
+                        Fecha
+                    </div>
+                    <div class="th col-3">
+                        Valor Total
+                    </div>
+                    <div class="th col-3">
+                        Opciones
+                    </div>
+                </div>
+                <div *ngFor="let venta of ventas; let i = index;" class="row fill">
+                    <div class="cell col-2">
+                        {{venta.id}}
+                    </div>
+                    <div class="cell col-2">
+                        {{venta.id_cliente}}
+                    </div>
+                    <div class="cell col-2">
+                        {{venta.fecha}}
+                    </div>
+                    <div class="cell col-3">
+                        {{venta.valor_total_venta}}
+                    </div>
+                    <div class="cell col-3">
+                        <button class="btn btn-warning opcion-btn" (click)="getVenta(venta.id)">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn btn-danger opcion-btn" (click)="deleteVenta(venta.id)">
+                            <i class="fa fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="read" class="card add">
+        <div class="card-header element">
+            <h3 class="mt-2">Registro de venta</h3>
+            <a (click)="nuevo=false; read=false;" class="btn btn-danger">
+                <i class="fa fa-arrow-left"></i> Regresar
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="card border-dark p-2">
+                <h6>Informacion Cliente</h6>
+                <form [formGroup]="formCliente">
+                    <div class="mb-2">
+                        <label for="id" class="form-label">ID. Cliente</label>
+                        <input id="id" formControlName="id" class="form-control p-2 mb-2" placeholder="Id Cliente" disabled/>
+                    </div>
+                    <div class="mb-2">
+                        <label for="nombres" class="form-label">Nombres del Cliente</label>
+                        <input id="nombres" formControlName="nombres" class="form-control p-2 mb-2" placeholder="Nombres" disabled/>
+                    </div>
+                    <div class="mb-2">
+                        <label for="apellidos" class="form-label">Apellidos del Cliente</label>
+                        <input id="apellidos" formControlName="apellidos" class="form-control p-2 mb-2" placeholder="Apellidos" disabled/>
+                    </div>
+                    <div class="mb-2">
+                        <label for="documento" class="form-label">Documento de Identidad</label>
+                        <input id="documento" formControlName="documento" class="form-control p-2 mb-2" placeholder="Documento" disabled/>
+                    </div>
+                </form>
+                <hr>
+                <h6>Informacion de Venta</h6>
+                <form [formGroup]="formVenta">
+                    <div *ngIf="read" class="mb-2">
+                        <label for="id" class="form-label">ID. Venta</label>
+                        <input id="id" formControlName="id" class="form-control p-2 mb-2" placeholder="Id" disabled/>
+                    </div>
+                    <div class="mb-2">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input id="fecha" formControlName="fecha" class="form-control p-2 mb-2" placeholder="Fecha" disabled/>
+                    </div>
+                    <div class="mb-2">
+                        <label for="valor_total_venta" class="form-label">Valor Total de Venta</label>
+                        <input type="number" id="valor_total_venta" formControlName="valor_total_venta" class="form-control p-2 mb-2" placeholder="Valor Total de Vent" disabled/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="nuevo" class="card">
+        <div class="card-header element">
+            <h3 class="mt-2">Registrar Nueva Venta</h3>
+            <a (click)="nuevo=false; exist=false; calcular=false;" class="btn btn-danger">
+                <i class="fa fa-arrow-left"></i> Regresar
+            </a>
+        </div>
+        <div class="card-body">
+            <div *ngIf="!exist" class="card search border-dark p-2">
+                <p class="text-center line">A continuación, ingrese el documento del cliente que va a realizar la compra</p>
+                <form [formGroup]="formCliente">
+                    <div class="mb-2">
+                        <label for="documento" class="form-label">Documento del Cliente</label>
+                        <input id="documento" formControlName="documento" class="form-control p-2 mb-2" placeholder="Documento" required/>
+                        <small class="form-text"> Recuerde que este campo no debe ir vacio </small>
+                    </div>
+                    <hr>
+                    <button (click)="buscarCliente()" class="btn btn-primary btn-block m-1">
+                        <i class="fa fa-search"></i>
+                        Buscar
+                    </button>
+                </form>
+            </div>
+            <div *ngIf="exist" class="card border-dark p-2">
+                <h4>Datos del Cliente</h4>
+                <form [formGroup]="formCliente" class="align-items-center">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="documento" class="form-label">Documento</label>
+                            <input id="documento" formControlName="documento" class="form-control" placeholder="Documento" disabled/>
+                        </div>
+                        <div class="col-4">
+                            <label for="nombres" class="form-label">Nombres</label>
+                            <input id="nombres" formControlName="nombres" class="form-control" placeholder="Nombres" disabled/>
+                        </div>
+                        <div class="col-4">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input id="apellidos" formControlName="apellidos" class="form-control" placeholder="Apellidos" disabled/>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <div class="mb-2">
+                    <label for="nombre" class="form-label">Seleccione un producto para agregar a la compra</label>
+                    <div class="row">
+                        <div class="col-10">
+                            <select id="nombre" class="form-select p-2 mb-2" placeholder="Nombre Producto" [(ngModel)]="producto" required>
+                                <option *ngFor="let prod of productos; let i = index;" [ngValue]="prod">{{prod.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-success btn-block btn-rounded mb-0" (click)="addCarrito()">
+                                <i class="fa fa-shopping-basket" style="font-size:26px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <small class="pl-2" *ngIf="outStock" style="color: crimson;">
+                        No esta disponible este producto (No hay Stock)
+                    </small>
+                    <small *ngIf="this.producto==null" class="form-text"> Recuerde que este campo no debe ir vacio</small>
+                </div>
+                <hr>
+                <!-- <form [formGroup]="formDetalle" class="align-items-center"> -->
+                <div class="list align-items-center">
+                    <div *ngIf="compras==[]" class="alert alert-warning text-center mt-3">
+                        <h3 class="alert-heading">No hay ningun producto para comprar</h3>
+                        <p>
+                            <i class="fa fa-exclamation fa-2x    "></i>
+                        </p>
+                    </div>
+                    <div *ngIf="compras.length>0" class="lista">
+                        <div class="row ">
+                            <div class="th col-4">
+                                Nombre
+                            </div>
+                            <div class="th col-2">
+                                Precio
+                            </div>
+                            <div class="th col-2">
+                                Stock
+                            </div>
+                            <div class="th col-4">
+                                Opciones
+                            </div>
+                        </div>
+                        <div *ngFor="let comp of compras; let i = index;" class="row fill">
+                            <div class="cell col-4">
+                                {{comp.nombre}}
+                            </div>
+                            <div class="cell col-2">
+                                {{comp.precio}}
+                            </div>
+                            <div class="cell col-2">
+                                {{comp.stock}}
+                            </div>
+                            <div class="cell col-2">
+                                <select id="cantidad" class="form-select" placeholder="Cantidad" [(ngModel)]="comp.compra" required>
+                                        <option *ngFor="let num of comp.cantDisp; let i = index;" [ngValue]="num">{{num}}</option>
+                                </select>
+                            </div>
+                            <div class="cell col-2">
+                                <button class="btn btn-danger opcion-btn" (click)="compras.pop(comp.id)">
+                                        <i class="fa fa-trash-alt"></i>
+                                    </button>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-block btn-primary " (click)="calcularCompra()">
+                                    <i class="fa fa-calculator"></i>
+                                    Calcular Compra
+                                </button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div *ngIf="calcular">
+                    <div class="list align-items-center">
+                        <div *ngIf="detalles.length>0" class="lista">
+                            <div class="row ">
+                                <div class="th col-4">
+                                    Id.Producto
+                                </div>
+                                <div class="th col-4">
+                                    Cantidad
+                                </div>
+                                <div class="th col-4">
+                                    Sub Total
+                                </div>
+                            </div>
+                            <div *ngFor="let detail of detalles; let i = index;" class="row fill">
+                                <div class="cell col-4">
+                                    {{detail.id_producto}}
+                                </div>
+                                <div class="cell col-4">
+                                    {{detail.cantidad}}
+                                </div>
+                                <div class="cell col-4">
+                                    {{detail.valor_x_cant}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5>Total</h5>
+                    <form [formGroup]="formVenta" class="align-items-center">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fecha" class="form-label">Fecha de Factura</label>
+                                <input id="fecha" formControlName="fecha" class="form-control p-2 mb-2" placeholder="Fecha Actual" disabled/>
+                            </div>
+                            <div class="col-6">
+                                <label for="valor_total_venta" class="form-label">Valor Total de Venta</label>
+                                <input id="valor_total_venta" formControlName="valor_total_venta" class="form-control p-2 mb-2" placeholder="Valor Total" disabled/>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="mt-3">
+                        <button class="btn btn-block btn-warning " (click)="realizarCompra()">
+                            <i class="fa fa-shopping-basket"></i>
+                            Realizar Compra
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

@@ -30,7 +30,7 @@ Home
 
 Registrar Venta
 
-<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/venta.JPG" width="800" height="650" />
+<img src="https://github.com/SagLara/Sistema-de-ventas-Angular-GUI/blob/master/src/utils/gui/venta.JPG" width="770" height="650" />
 
 Listado Productos
 

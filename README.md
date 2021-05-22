@@ -4,7 +4,7 @@
 ### Shop
 Proyecto realizado como una prueba tecnica, es un sistema de ventas que puede Ver,crear, editar y eliminar clientes, productos informes y registros de ventas.
 
-Se almacenan cordenadas de un cliente para visualizarlas en una vista de Google Maps.
+Se almacenan coordenadas de un cliente para visualizarlas en una vista de Google Maps.
 
 Se pueden buscar informes que brindan informacion estadistica simple de las ventas realizadas en un dia en especifico.
 

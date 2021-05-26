@@ -13,7 +13,7 @@ Se manejan restricciones tanto desde el Front como desde la Base de Datos.
 Se uso PHP del lado del Servidor, a continuación adjunto el link del proyecto.
 
 Uso de MySQL para la Base de Datos.
-Uso de Bootstrap para esitlos.
+Uso de Bootstrap para estilos.
 Uso de Font Awesome para los iconos.
 
 [Logica de Sistema de Ventas PHP](https://github.com/SagLara/Logica-de-Sistema-de-Ventas-PHP)
